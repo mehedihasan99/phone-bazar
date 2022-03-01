@@ -52,26 +52,37 @@ const phoneDetails = details =>{
 // display phone details
 
 const displayPhoneDetails = phoneDetails =>{
-    console.log(phoneDetails.mainFeatures);
+    console.log(phoneDetails.mainFeatures.sensors);
     const phoneDetail = document.getElementById("phone-detail");
     const div = document.createElement("div");
     div.className = "col-lg-12";
     div.innerHTML = `
-    <div class="card mx-auto w-25 mt-4">
-        <img src="${phoneDetails.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${phoneDetails.name}</h5>
-        <h6 class="card-title">${phoneDetails.releaseDate ? phoneDetails.releaseDate :"Release date not found"}</h6>
-        <h5>Main Features</h5>
-        <ul>
-        <li>Storage :${phoneDetails.mainFeatures.storage}</li>
-        <li>${phoneDetails.mainFeatures.displaySize}</li>
-        <li>${phoneDetails.mainFeatures.chipSet}</li>
-        <li>${phoneDetails.mainFeatures.}</li>
-        <li>${phoneDetails.mainFeatures.storage}</li>
-        </ul>
-        </div>
+    <div class="card my-3 mx-auto" style="max-width: 640px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="${phoneDetails.image}" class="img-fluid rounded-start" alt="...">
     </div>
-    `
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">${phoneDetails.name}</h4>
+        <h6 class="card-title">${phoneDetails.releaseDate ? phoneDetails.releaseDate :"Release date not found"}</h6>
+         <h5>Main Features</h5>
+        <ul>
+         <li>Storage :${phoneDetails.mainFeatures.storage}</li>
+         <li>Display Size :${phoneDetails.mainFeatures.displaySize}</li>
+         <li>ChipSet :${phoneDetails.mainFeatures.chipSet}</li>
+         <li>Memory :${phoneDetails.mainFeatures.memory}</li>
+         </ul>
+         <h5>Sensors</h5>
+         <ul>
+          <li>${phoneDetails.mainFeatures.sensors[0]}</li>
+          <li>${phoneDetails.mainFeatures.sensors[3]}</li>
+          <li>${phoneDetails.mainFeatures.sensors[4]}</li>
+         </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`
     phoneDetail.appendChild(div);
 }
