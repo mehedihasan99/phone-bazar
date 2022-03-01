@@ -24,7 +24,7 @@ const searchPhone = () =>{
     .then(data => {
         // --------- error msg condition-------
         if(data.data.length == 0 || data.data == ""){
-            errorMsg.innerText = "Please Input a Valid Value"; 
+            errorMsg.innerText = "No Phone Found"; 
         }
         else{
             errorMsg.innerText = "";
