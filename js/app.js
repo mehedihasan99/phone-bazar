@@ -52,6 +52,26 @@ const phoneDetails = details =>{
 // display phone details
 
 const displayPhoneDetails = phoneDetails =>{
+    console.log(phoneDetails.mainFeatures);
     const phoneDetail = document.getElementById("phone-detail");
-    console.log(phoneDetails);
+    const div = document.createElement("div");
+    div.className = "col-lg-12";
+    div.innerHTML = `
+    <div class="card mx-auto w-25 mt-4">
+        <img src="${phoneDetails.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">${phoneDetails.name}</h5>
+        <h6 class="card-title">${phoneDetails.releaseDate ? phoneDetails.releaseDate :"Release date not found"}</h6>
+        <h5>Main Features</h5>
+        <ul>
+        <li>Storage :${phoneDetails.mainFeatures.storage}</li>
+        <li>${phoneDetails.mainFeatures.displaySize}</li>
+        <li>${phoneDetails.mainFeatures.chipSet}</li>
+        <li>${phoneDetails.mainFeatures.}</li>
+        <li>${phoneDetails.mainFeatures.storage}</li>
+        </ul>
+        </div>
+    </div>
+    `
+    phoneDetail.appendChild(div);
 }
