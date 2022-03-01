@@ -1,12 +1,16 @@
-// ----------------error msg--------------------
+// ----------------error msg by id--------------------
 const errorMsg = document.getElementById("error-msg");
-// --------- spinner----------
+// --------- spinner by id----------
 function displaySpinner(style){
     document.getElementById("spinner").style.display = style;
 }
 // --------- card group visibility style---------
 function displayPhoneStyle(cardStyle){
     document.getElementById("card-group").style.visibility = cardStyle;
+}
+// -------- detail card visibility style---
+function phoneDetailsStyle(DetailsStyle){
+    document.getElementById("phone-detail").style.display = DetailsStyle;
 }
 // ------------------------search button-----------
 const searchPhone = () =>{
@@ -29,6 +33,7 @@ const searchPhone = () =>{
     })  
     displaySpinner("block") ;
     displayPhoneStyle("hidden");
+    phoneDetailsStyle("none");
 }
 
 //---------------- display phone ---------
@@ -110,4 +115,5 @@ const displayPhoneDetails = phoneDetails =>{
 </div>
 `
     phoneDetail.appendChild(div);
+    phoneDetailsStyle("block");
 }
