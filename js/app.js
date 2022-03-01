@@ -9,6 +9,7 @@ const searchPhone = () =>{
     fetch(url)
     .then(res => res.json())
     .then(data => {
+        // --------- error msg condition-------
         if(data.data.length == 0){
             errorMsg.innerText = "Please Input a Valid Value"
         }
@@ -19,15 +20,17 @@ const searchPhone = () =>{
 }
 // display phone 
 const displayPhone = phones =>{
+    // display 20 items 
     const phoneList = phones.slice(0, 20);
     const cardGroup = document.getElementById("card-group");
+    cardGroup.textContent = "";
     phoneList.forEach( phone =>{
     // console.log(phone.slug);
     const div = document.createElement("div");
     div.className = "col-lg-4";
     // console.log(phone.brand);
     div.innerHTML = `
-    <div class="card mb-4 mx-auto">
+    <div class="card mb-4">
         <div class="text-center mt-3">
         <img src="${phone.image}" class="card-img-top w-50"  alt="...">
         </div>
@@ -56,11 +59,12 @@ const displayPhoneDetails = phoneDetails =>{
     // console.log(phoneDetails.others);
     // ------------------- phone detail container---
     const phoneDetail = document.getElementById("phone-detail");
+    phoneDetail.textContent = "";
     // ---------- create new date and append--
     const div = document.createElement("div");
     div.className = "col-lg-12";
     div.innerHTML = `
-    <div class="card my-3 p-3 mx-auto" style="max-width: 640px;">
+    <div class="card my-3 mx-auto" style="max-width: 640px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="${phoneDetails.image}" class="img-fluid rounded-start" alt="...">
