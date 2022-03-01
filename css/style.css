@@ -13,4 +13,8 @@ body{
 #main-nav{
     height: 80px;
 }
+/* spinner */
+#spinner{
+    display: none;
+}
 /* card */

@@ -1,5 +1,9 @@
 // ----------------error msg--------------------
 const errorMsg = document.getElementById("error-msg");
+// --------- spinner----------
+function displaySpinner(style){
+    document.getElementById("spinner").style.display = style;
+}
 // ------------------------search button-----------
 const searchPhone = () =>{
     const inputField = document.getElementById("input-field");
@@ -11,19 +15,26 @@ const searchPhone = () =>{
     .then(data => {
         // --------- error msg condition-------
         if(data.data.length == 0){
-            errorMsg.innerText = "Please Input a Valid Value"
+            errorMsg.innerText = "Please Input a Valid Value";
+            
         }
         else{
+            errorMsg.innerText = "";
             displayPhone(data.data)
         }
-    })   
+    })  
+    displaySpinner("block") ;
+    displayPhoneStyle("hidden");
 }
-// display phone 
+function displayPhoneStyle(style){
+    document.getElementById("card-group").style.visibility = style;
+}
+// display phone /
+
 const displayPhone = phones =>{
     // display 20 items 
     const phoneList = phones.slice(0, 20);
     const cardGroup = document.getElementById("card-group");
-    cardGroup.textContent = "";
     phoneList.forEach( phone =>{
     // console.log(phone.slug);
     const div = document.createElement("div");
@@ -34,7 +45,7 @@ const displayPhone = phones =>{
         <div class="text-center mt-3">
         <img src="${phone.image}" class="card-img-top w-50"  alt="...">
         </div>
-        <div class="card-body text-center">
+        <div class="card-body ">
         <h5 class="card-title">${phone.phone_name}</h5>
         <h5 class="card-title">${phone.brand}</h5>
         <button onclick="phoneDetails('${phone.slug}')" href="#" class="btn btn-primary mt-3">Details</button>
@@ -44,6 +55,8 @@ const displayPhone = phones =>{
     `
      cardGroup.appendChild(div);
     })
+    displaySpinner("none") ;
+    displayPhoneStyle("visible")
 }
 //---------------------- phone details by id---------------
 const phoneDetails = details =>{
