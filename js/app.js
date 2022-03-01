@@ -27,11 +27,11 @@ const displayPhone = phones =>{
     div.className = "col-lg-4";
     // console.log(phone.brand);
     div.innerHTML = `
-    <div class="card mb-4">
-        <div>
-        <img src="${phone.image}" class="card-img-top"  alt="...">
+    <div class="card mb-4 mx-auto">
+        <div class="text-center mt-3">
+        <img src="${phone.image}" class="card-img-top w-50"  alt="...">
         </div>
-        <div class="card-body">
+        <div class="card-body text-center">
         <h5 class="card-title">${phone.phone_name}</h5>
         <h5 class="card-title">${phone.brand}</h5>
         <button onclick="phoneDetails('${phone.slug}')" href="#" class="btn btn-primary mt-3">Details</button>
@@ -48,16 +48,19 @@ const phoneDetails = details =>{
     fetch(url)
     .then(res => res.json())
     .then(data => displayPhoneDetails(data.data))
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 // display phone details
 
 const displayPhoneDetails = phoneDetails =>{
-    console.log(phoneDetails.mainFeatures.sensors);
+    // console.log(phoneDetails.others);
+    // ------------------- phone detail container---
     const phoneDetail = document.getElementById("phone-detail");
+    // ---------- create new date and append--
     const div = document.createElement("div");
     div.className = "col-lg-12";
     div.innerHTML = `
-    <div class="card my-3 mx-auto" style="max-width: 640px;">
+    <div class="card my-3 p-3 mx-auto" style="max-width: 640px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="${phoneDetails.image}" class="img-fluid rounded-start" alt="...">
@@ -78,6 +81,12 @@ const displayPhoneDetails = phoneDetails =>{
           <li>${phoneDetails.mainFeatures.sensors[0]}</li>
           <li>${phoneDetails.mainFeatures.sensors[3]}</li>
           <li>${phoneDetails.mainFeatures.sensors[4]}</li>
+         </ul>
+          <h5>Others</h5>
+         <ul>
+          <li>Bluetooth :${phoneDetails?.others?.Bluetooth ? phoneDetails?.others?.Bluetooth : "No found"}</li>
+          <li>${phoneDetails?.others?.GPS ? phoneDetails.others.GPS : "Not Found"}</li>
+          <li>${phoneDetails?.others?.NFC ? phoneDetails.others.NFC: "Not Found"}</li>
          </ul>
       </div>
     </div>
