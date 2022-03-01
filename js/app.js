@@ -13,7 +13,7 @@ const searchPhone = () =>{
     const inputField = document.getElementById("input-field");
     const inputValue = inputField.value ;
     inputField.value = '';
-    // dynamic url with case sensitive
+    //---------- dynamic url with case sensitive
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue.toLowerCase()}`
     fetch(url)
     .then(res => res.json())
@@ -51,9 +51,9 @@ const displayPhone = phones =>{
         <button onclick="phoneDetails('${phone.slug}')" href="#" class="btn btn-primary mt-3">Details</button>
         </div>
     </div>
-    
     `
      cardGroup.appendChild(div);
+
     })
     displaySpinner("none") ;
     displayPhoneStyle("visible")
@@ -66,7 +66,7 @@ const phoneDetails = details =>{
     .then(data => displayPhoneDetails(data.data))
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-// display phone details
+//-------------- display phone details
 
 const displayPhoneDetails = phoneDetails =>{
     // ------------------- phone detail container---
