@@ -52,5 +52,6 @@ const phoneDetails = details =>{
 // display phone details
 
 const displayPhoneDetails = phoneDetails =>{
+    const phoneDetail = document.getElementById("phone-detail");
     console.log(phoneDetails);
 }
